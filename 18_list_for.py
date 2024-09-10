@@ -83,3 +83,34 @@ print(intlist)
 print("map関数:" , list(result))
 print ("内包表記:" , list(x*x for x in intlist))
 
+# filter関数
+# 条件を満たすもののみを要素とするイテレータを戻り値とする
+intlist = list(range(10))  # [0, 1, 2, ..., 9]
+result = filter(lambda x : x % 2 == 0, intlist)  # 偶数だけを選択
+print(intlist)
+print(list(result))
+
+# all関数、any関数
+# all（iterable）:反復可能オブジェクトのすべての要素がTrueの場合にTrueを返す。Falseが一つでもあればFalseを返す。
+# any(iterable) : 反復可能オブジェクトのいずれかがTrueなら、Trueを返す。すべてFalseならFalseを返す。
+
+intlist1 = list(range(5))  # [0, 1, 2, 3, 4]
+intlist2 = list(range(1, 6))  # [1, 2, 3, 4, 5]
+intlist3 = [0] * 5  # [0, 0, 0, 0, 0]
+strlist1 = ['', 'foo', 'bar']
+strlist2 = ['foo', 'bar', 'baz']
+strlist3 = [''] * 5
+emptylist = []
+
+# 0以外の数値、空ではないリスト、文字列はTrueとみなす
+
+print('all(intlist1):', all(intlist1))  # False：0は「偽」と見なされる
+print('all(intlist2):', all(intlist2))  # True
+print('all(intlist3):', all(intlist3))  # False：0は「偽」と見なされる
+
+print('any(strlist1):', any(strlist1))  # True
+print('any(strlist2):', any(strlist2))  # True
+print('any(strlist3):', any(strlist3))  # False：空文字列は「偽」と見なされる
+
+print('all(emptylist):', all(emptylist))  # True：空のリストを渡すと戻り値はTrue
+print('any(emptylist):', any(emptylist))  # False：空のリストを渡すと戻り値はFalse
