@@ -89,3 +89,84 @@ print('myset1 > myset2', myset1 > myset2)   # True
 print('myset2 < myset1', myset2 < myset1)   # True
 print('myset2 > myset3', myset2 > myset3)   # False
 print('myset2 < myset3', myset2 < myset3)   # False
+print()
+
+# union/ defference/ intersection/ symmetric_difference メソッド：集合の和・差・積・対称差
+## 集合の和：unionメソッド、| 演算
+myset1 = {1, 2, 3}
+myset2 = {4, 5, 6}
+myset3 = {1, 3, 5, 7}
+
+myset4 = myset1.union(myset3)
+print(myset4)
+
+myset4 = myset1 | myset2 | myset3
+print(myset4)
+
+## 集合の差：differenceメソッド、-演算
+myset1 = set(range(7))  # {0, 1, 2, ……, 6}
+myset2 = {x for x in range(4, 9, 2)}   # {4, 6, 8}
+myset3 = {x for x in range(0, 4, 2)}  # {0, 2}
+
+myset4 = myset1.difference(myset2)
+print(myset4)
+
+myset4 = myset1 - myset2 - myset3
+print(myset4)
+
+# 集合の席：intersectionメソッド、&演算
+myset1 = set(range(1, 6))     # {1, 2, 3, 4, 5}
+myset2 = set(range(2, 7, 2))  # {2, 4, 6}
+myset3 = {x for x in range(6) if x % 2}  # {1, 3, 5}
+
+myset4 = myset1.intersection(myset2)
+print(myset4)
+
+myset4 = myset1 & myset3
+print(myset4)
+
+# 集合の対称差：symmetric_differnceメソッド、^演算
+## 対称差：集合の和から共通部分を除く
+myset1 = set(range(4))      # {0, 1, 2, 3}
+myset2 = set(range(2, 6))   # {2, 3, 4, 5}
+myset3 = set(range(-2, 2))  # {-2, -1, 0, 1}
+
+myset4 = myset1.symmetric_difference(myset2)
+print(myset4)
+
+myset4 = myset1 ^ myset3
+print(myset4)
+print()
+
+# 集合の更新
+## update/ difference_update/ intersection_update/ symmetric_difference_updateメソッド
+## 和・差・積・対称差を求めて、集合を更新するもの
+myset1 = set(range(0, 10, 2))  # {0, 2, 4, 6, 8}
+myset2 = set(range(1, 11, 2))  # {1, 3, 5, 7, 9}
+myset3 = set(range(5))         # {0, 1, 2, 3, 4}
+
+myset1.update(myset2)  # myset1とmyset2の和でmyset1を更新
+print(myset1)  # {0, 1, 2, ……, 8, 9}
+
+myset1 -= myset2  # myset1とmyset1の差でmyset1を更新
+print(myset1)  # {0, 2, 4, 6, 8}
+
+myset1.intersection_update(myset3)  # myset1とmyset3の積でmyset1を更新
+print(myset1)  # {0, 2, 4}
+
+myset2 ^= myset3  # myset2とmyset3の対称差でmyset2を更新
+print(myset2)  # {0, 2, 4, 5, 7, 9}
+
+myset1 = set()  # 空の集合を作成
+myset1 |= {1, 2} | {3, 4} | {5, 6}  # 複数の集合で集合myset1を更新
+print(myset1)
+
+print()
+
+# frozenset：一度設定したら、要素の変更（要素の追加、削除、更新）ができない集合
+myset = set(range(5))
+myfrozenset = frozenset(myset)
+
+print(myfrozenset)
+# myfrozenset.add(5)　：frozensetとして定めると、要素の追加ができない
+## frozensetは、辞書のキーとして活用できる
