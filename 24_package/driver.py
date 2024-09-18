@@ -8,8 +8,16 @@
 # print(mypkg.mymath.fact(5))
 
 ## 解決策2: from import文を活用する
+"""
 from mypkg import mymath  # mypkgパッケージのmymathモジュールをインポート
 from mypkg.mymath import fact  # mypkg.mymathモジュールからfact関数をインポート
 
 print(fact(5))
 print(mymath.fizzbuzz(15))
+"""
+print(dir())
+from mypkg import * # 何もインポートされていない　-> _init_.pyへの記述が必要
+print(dir())
+
+
+
