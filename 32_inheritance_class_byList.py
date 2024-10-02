@@ -73,5 +73,57 @@ MyStack3は継承の関係 = is-aの関係 ----スタックはリスト（の一
 MyStack2は包括の関係 = has-aの関係----スタックはリストを包括する
 何のメソッドを使うかによって使い分ける必要がでてくる。
 """
+## 例 __init__メソッドのオーバーライドについて
+mylist = list([1,2,3])
+print(mylist)
+# mylist = list(1,2,3) # エラー：引数は0個か1個だけ
 
+mystack = MyStack3([1, 2, 3])  # 1、2、3を要素とするスタックを生成
+print(mystack)
+# mystack = MyStack(1, 2, 3)  # エラー（引数は0個か1個だけ）
+print()
 
+class MyStack3(list):
+    def __init__(self, *args):
+        # print(args)  # 可変長位置引数を確認したければコメントアウト
+        super().__init__(args)
+    def push(self, item):
+        self.append(item)
+    
+mystack = MyStack3()
+print(mystack)
+mystack = MyStack3(1)
+print(mystack)
+mystack = MyStack3([1, 2, 3]) ##[1,2,3]を要素にもつリスト
+print(mystack)
+mystack = MyStack3(1, 2, 3) ## 1,2,3を要素に持つリスト 
+print(mystack)
+mystack = MyStack3(1, 2, [3, 4]) ## 1,2,[3,4]を要素に持つリスト
+print(mystack)
+
+# copyメソッドのオーバーライド
+## copyメソッドを呼び出しても、戻り値はリストになる　※スタックにならない
+mystack2 = mystack.copy()
+print(type(mystack2))
+
+"""
+戻り値の型をstackに変えるには？
+"""
+class MyStack3(list):
+    def __init__(self, *args):
+        # print(args)
+        super().__init__(args)
+    def push(self, item):
+        self.append(item)
+    def copy(self):   ## copeインスタンスメソッドを定義
+        tmp = list.copy(self)  ## self.copy()ではない  <-- インスタンスメソッドの中で、さらにインスタンスメソッドを呼び出さないようにする
+        return MyStack3(*tmp)  ## コピーしたリストを*で展開して__init__に渡している
+
+mystack = MyStack3(1, 2, [3, 4])
+print(mystack)
+mystack2 = mystack.copy()
+print(type(mystack2))
+print('mystack:', mystack)
+print('mystack2:', mystack2)
+print('mystack == mystack2:', mystack == mystack2)
+print('mystack is mystack2:', mystack is mystack2)
