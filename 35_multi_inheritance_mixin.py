@@ -103,6 +103,7 @@ Bar --継承--> Foo -- 継承 --> Object
 bar = Bar()
 bar.x = 100
 bar.show_members() #３つのインスタンス変数が表示されたことがわかる
+print()
 
 ##  Utilクラスは、全く異なるクラス階層を構成する場合であっても自由に利用できる
 class Base:
@@ -111,3 +112,57 @@ class Base:
 class Derived(Base, Util):
     def __init__(self):
         self.some_value = 100
+
+# mixinされたクラスの挙動を変更する
+## テンプレートメソッドパターン：大枠の処理を定義しておき、mixinした側のクラスで、独自の振る舞いを実現する方法
+
+class Util:
+    def mixin_method(self): ## antherメソッドを呼び出すのみ
+        self.another_method()
+    def another_method(self): ## NotImplementError例外を発生させるだけ <-- Utilクラスをmixinした側でオーバーライドする必要があることを伝える
+        raise NotImplementedError('method not implemented')
+
+# Utilクラスを複数のクラスへmixinする
+class Foo:
+    pass
+
+class Bar(Foo, Util):
+    def __init__(self):
+        self.x = 'BAR'
+    def another_method(self):
+        print('Hello from', self.x)
+
+class Baz(Foo, Util):
+    def __init__(self):
+        self.y = 'BAZ'
+    def another_method(self):
+        print('Hello from', self.y)
+
+class Qux(Foo, Util):
+    pass
+
+bar = Bar()
+baz = Baz()
+qux = Qux()
+bar.mixin_method()
+baz.mixin_method()
+# qux.mixin_method()
+print()
+
+"""
+mixinクラスは、単体では役に立たない（データのない処理だけであるため）
+特に、インスタンスを生成しても意味がない
+
+util = Util()
+util.mixin_method() # 例外が発生するだけ
+"""
+
+class Util:
+    def show_members(self):
+        print(self.__dict__)
+    def show_mro(self):
+        print(self.__class__.__mro__)
+
+util = Util()
+util.show_members()
+util.show_mro()
