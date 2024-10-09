@@ -67,28 +67,28 @@ print()
 
 class CalcSquare:
     def __init__(self,num):
-        self.squareList = list(range(num + 1))
+        self.numList = list(range(num + 1))
     
     def square(self):
         i = 0
-        while i < len(self.squareList):
-            self.squareList[i] = self.squareList[i] ** 2
+        while i < len(self.numList):
+            self.numList[i] = self.numList[i] ** 2
             i += 1
+        return self.numList
 
 class CalcSquareSummary(CalcSquare):
-    def __init__(self, num):
-        self.squareList = self.square()
 
     def sum(self):
         result = 0
-        for item in self.squareList:
+        for item in self.square(self):
             result += item
+        return result
 
 num12 = CalcSquare(12)
-print(num12.squareList)
+print(num12.numList)
 print(num12.square())
 
-num100 = CalcSquare(100)
-print(num100.squareList)
-
-
+num14 = CalcSquareSummary(14)
+print(num14.numList)
+print(num14.square())
+print(num14.sum)
