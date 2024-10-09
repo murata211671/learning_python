@@ -63,4 +63,32 @@ personal1.setData("murata", "yuki", "24", "20000201", "Japanese")
 print(personal1.database)
 personal1.setData("murata", "mizuki", "17", "20061019", "Japanese")
 print(personal1.database)
+print()
+
+class CalcSquare:
+    def __init__(self,num):
+        self.squareList = list(range(num + 1))
+    
+    def square(self):
+        i = 0
+        while i < len(self.squareList):
+            self.squareList[i] = self.squareList[i] ** 2
+            i += 1
+
+class CalcSquareSummary(CalcSquare):
+    def __init__(self, num):
+        self.squareList = self.square()
+
+    def sum(self):
+        result = 0
+        for item in self.squareList:
+            result += item
+
+num12 = CalcSquare(12)
+print(num12.squareList)
+print(num12.square())
+
+num100 = CalcSquare(100)
+print(num100.squareList)
+
 
