@@ -65,6 +65,10 @@ personal1.setData("murata", "mizuki", "17", "20061019", "Japanese")
 print(personal1.database)
 print()
 
+
+## CalcSquareクラス
+## コンストラクタ：初期値（INT型）までのリストを作成する
+## フィールド　　：
 class CalcSquare:
     def __init__(self,num):
         self.numList = list(range(num + 1))
@@ -80,15 +84,21 @@ class CalcSquareSummary(CalcSquare):
 
     def sum(self):
         result = 0
-        for item in self.square(self):
+        for item in self.numList:
             result += item
         return result
 
 num12 = CalcSquare(12)
 print(num12.numList)
+num12.name = "murata"
+print(num12.name)
 print(num12.square())
+print(dir(CalcSquare))
+print(dir(num12))
+print()
 
-num14 = CalcSquareSummary(14)
+
+num14 = CalcSquareSummary(14,)
 print(num14.numList)
 print(num14.square())
-print(num14.sum)
+print(num14.sum())
