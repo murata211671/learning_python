@@ -102,3 +102,5 @@ num14 = CalcSquareSummary(14,)
 print(num14.numList)
 print(num14.square())
 print(num14.sum())
+
+list14 = num14.numList

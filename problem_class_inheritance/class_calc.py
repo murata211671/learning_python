@@ -53,4 +53,7 @@ for item in users.list:
     item.cost()
     item.cost_All()
 
+from class_inheritance import list14
+
+print(list14)
 
