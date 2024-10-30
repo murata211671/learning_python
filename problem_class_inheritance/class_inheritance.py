@@ -98,7 +98,7 @@ print(dir(num12))
 print()
 
 
-num14 = CalcSquareSummary(14,)
+num14 = CalcSquareSummary(14)
 print(num14.numList)
 print(num14.square())
 print(num14.sum())

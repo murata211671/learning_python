@@ -53,7 +53,7 @@ for item in users.list:
     item.cost()
     item.cost_All()
 
-from class_inheritance import list14
-
-print(list14)
+from class_inheritance import CalcSquare
+num = CalcSquare(10)
+print(num.numList)
 
