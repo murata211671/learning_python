@@ -32,3 +32,30 @@ print("計算を終了します。またのご利用をお待ちしておりま�
 """
 
 ## クラスと例外クラスを使用する場合
+
+class Numlist(list) :
+    def __init__(self) :
+        self.list = []
+
+    def addnum(self):
+        judge = True
+        while judge :
+            num = int(input("数値を入力してください-> "))
+            self.list.append(num)
+            print(f"現在のlist: {self.list}")
+
+            if input("引き続き計算を行いますか？ -> No: 0: ") == "0" :
+                judge = False
+        
+        print(vars(self))
+
+class Calc(Numlist) :
+    def sum(self) :
+        sum = 0
+        for item in self.list:
+            sum += item
+        print(f"sum: {sum}")
+
+num1 = Calc()
+num1.addnum()
+num1.sum() 
