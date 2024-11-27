@@ -1,0 +1,5 @@
+Hello Python
+Nice to meet you!
+
+ハロー　Python
+よろしく！
