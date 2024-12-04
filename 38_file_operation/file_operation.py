@@ -1,5 +1,5 @@
 # open関数
-greeting = open('test.txt')
+greeting = open('38_file_operation/test.txt')
 
-greeting.read()
-greeting.close()
+print(greeting.read())
+
