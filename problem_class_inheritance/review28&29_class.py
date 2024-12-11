@@ -18,6 +18,8 @@ print()
 # インスタンスが持つ個々の値を利用して、計算処理を行うため、インスタンスメソッド
 # クラスが持つ属性のことをメンバ
 
+
+# メンバ（インスタンス変数、インスタンスメソッド）
 point1.x = 1.0
 point1.y = 1.0
 print(dir(point1)) # x,yという属性（インスタンス変数）が増えている
@@ -38,3 +40,10 @@ print(point1.difference(point2))
 point3 = Point(5,4)
 print(point3.difference(point1))
 
+# メンバ（クラス変数、クラスメソッド、スタティックメソッド）
+
+# インスタンスごとに固有のデータ（インスタンス変数）は、宣言なしに必要なタイミングで付加できる
+point1.hello = lambda x: print("Hello" , str(x))
+point1,hello("yuuki")
+
+point2.hello("yuuki")
