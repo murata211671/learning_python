@@ -142,7 +142,7 @@ print()
 class Person :
     count = 0
     today = datetime.datetime.today().date()
-
+    
     def __init__(self, dict):
         self.fname = dict.get('fname')
         self.sname = dict.get('sname')
@@ -152,6 +152,7 @@ class Person :
         self.number = Person.count
         Person.count += 1
     
+    @classmethod
     def create(self, item):
         self.list = []
         self.list.append(item)
@@ -203,4 +204,11 @@ print(s)
 
 print(person0.create(person1))
 print(person0.create(person2))
+print()
+
+
+class Student(Person):
+    def __init__(self, number):
+        self.number = number
+
 
